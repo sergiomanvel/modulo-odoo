@@ -75,8 +75,8 @@
             <field name="type_id" ref="type_reparacion"/>
             <field name="priority">3</field>
             <field name="state">quoted</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() + timedelta(days=3)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'labor', 'name': 'Diagnóstico y reparación', 'quantity': 4, 'unit_cost': 25, 'unit_price': 38}),
                 (0, 0, {'line_type': 'material', 'name': 'Repuestos horno industrial', 'quantity': 1, 'unit_cost': 430, 'unit_price': 480}),
@@ -92,8 +92,8 @@
             <field name="type_id" ref="type_led"/>
             <field name="priority">1</field>
             <field name="state">pending</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=5)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() + timedelta(days=15)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'material', 'name': 'Luminarias LED', 'quantity': 10, 'unit_cost': 18, 'unit_price': 32}),
                 (0, 0, {'line_type': 'material', 'name': 'Material de fijación y cableado', 'quantity': 1, 'unit_cost': 60, 'unit_price': 110}),
@@ -110,9 +110,9 @@
             <field name="type_id" ref="type_cuadro"/>
             <field name="priority">2</field>
             <field name="state">accepted</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=8)).strftime('%Y-%m-%d')"/>
-            <field name="date_accepted" eval="(datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=8)).strftime('%Y-%m-%d')"/>
+            <field name="date_accepted" eval="(datetime.today() - timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() + timedelta(days=7)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'material', 'name': 'Cuadro modular + protecciones', 'quantity': 1, 'unit_cost': 520, 'unit_price': 820}),
                 (0, 0, {'line_type': 'material', 'name': 'Cableado y canalización', 'quantity': 1, 'unit_cost': 150, 'unit_price': 230}),
@@ -130,8 +130,8 @@
             <field name="type_id" ref="type_cuadro"/>
             <field name="priority">2</field>
             <field name="state">quoted</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=3)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() + timedelta(days=5)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'material', 'name': 'Ampliación de potencia (material)', 'quantity': 1, 'unit_cost': 900, 'unit_price': 820}),
                 (0, 0, {'line_type': 'labor', 'name': 'Instalación y trámites', 'quantity': 8, 'unit_cost': 22, 'unit_price': 28}),
@@ -146,9 +146,9 @@
             <field name="type_id" ref="type_tomas"/>
             <field name="priority">1</field>
             <field name="state">in_progress</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=10)).strftime('%Y-%m-%d')"/>
-            <field name="date_accepted" eval="(datetime.date.today() - datetime.timedelta(days=6)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="date_accepted" eval="(datetime.today() - timedelta(days=6)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() + timedelta(days=2)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'material', 'name': 'Cuadro secundario + material', 'quantity': 1, 'unit_cost': 300, 'unit_price': 360}),
                 (0, 0, {'line_type': 'labor', 'name': 'Canalización e instalación', 'quantity': 5, 'unit_cost': 22, 'unit_price': 32}),
@@ -163,8 +163,8 @@
             <field name="type_id" ref="type_led"/>
             <field name="priority">2</field>
             <field name="state">pending</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=20)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() - timedelta(days=2)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'material', 'name': 'Luminarias LED + emergencias', 'quantity': 12, 'unit_cost': 18, 'unit_price': 34}),
                 (0, 0, {'line_type': 'labor', 'name': 'Montaje e instalación', 'quantity': 8, 'unit_cost': 22, 'unit_price': 40}),
@@ -180,10 +180,10 @@
             <field name="type_id" ref="type_revision"/>
             <field name="priority">0</field>
             <field name="state">done</field>
-            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d')"/>
-            <field name="date_accepted" eval="(datetime.date.today() - datetime.timedelta(days=25)).strftime('%Y-%m-%d')"/>
-            <field name="date_done" eval="(datetime.date.today() - datetime.timedelta(days=12)).strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() - datetime.timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="(datetime.today() - timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="date_accepted" eval="(datetime.today() - timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="date_done" eval="(datetime.today() - timedelta(days=12)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() - timedelta(days=10)).strftime('%Y-%m-%d')"/>
             <field name="quote_line_ids" eval="[
                 (0, 0, {'line_type': 'labor', 'name': 'Revisión de instalación', 'quantity': 3, 'unit_cost': 25, 'unit_price': 45}),
                 (0, 0, {'line_type': 'extra', 'name': 'Informe técnico', 'quantity': 1, 'unit_cost': 0, 'unit_price': 60}),
@@ -199,8 +199,8 @@
             <field name="type_id" ref="type_tomas"/>
             <field name="priority">0</field>
             <field name="state">draft</field>
-            <field name="date_request" eval="datetime.date.today().strftime('%Y-%m-%d')"/>
-            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="date_request" eval="datetime.today().strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.today() + timedelta(days=10)).strftime('%Y-%m-%d')"/>
         </record>
 
     </data>
