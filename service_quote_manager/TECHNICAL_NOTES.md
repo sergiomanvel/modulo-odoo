@@ -1,7 +1,7 @@
 # Notas técnicas — Service Quote Manager
 
 Documento de arquitectura y decisiones de diseño. Complementa al `README.md`
-(instalación/uso) y al `DEMO_SCRIPT.md` (demo).
+(instalación/uso).
 
 > **Versión objetivo:** Odoo **17.0**. El código sigue las convenciones de v17
 > (ver §6).

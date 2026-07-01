@@ -55,7 +55,6 @@ release/
 !service_quote_manager/
 !service_quote_manager/README.md
 !service_quote_manager/INSTALL_TESTING.md
-!service_quote_manager/DEMO_SCRIPT.md
 !service_quote_manager/TECHNICAL_NOTES.md
 !service_quote_manager/static/
 !service_quote_manager/static/description/

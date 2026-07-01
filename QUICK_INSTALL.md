@@ -193,4 +193,3 @@ Resultado esperado: **`0 failed, 0 error(s) of 14 tests`**.
 Más detalle funcional y técnico en:
 - [`service_quote_manager/README.md`](service_quote_manager/README.md)
 - [`service_quote_manager/TECHNICAL_NOTES.md`](service_quote_manager/TECHNICAL_NOTES.md)
-- [`service_quote_manager/DEMO_SCRIPT.md`](service_quote_manager/DEMO_SCRIPT.md)

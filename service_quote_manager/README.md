@@ -14,7 +14,6 @@ estados. Pensado como caso de uso realista para una empresa de servicios
 | Documento | Contenido |
 |-----------|-----------|
 | `README.md` | Instalación, uso, checklist de pruebas y mejoras futuras (este archivo) |
-| `DEMO_SCRIPT.md` | Guion de demo cronometrado para entrevista |
 | `TECHNICAL_NOTES.md` | Arquitectura, decisiones de diseño y convenciones Odoo 17 |
 
 ---
@@ -91,7 +90,6 @@ service_quote_manager/
 │   ├── __init__.py
 │   └── test_service_request.py     # márgenes, flujo, regla de aceptación, cron
 ├── static/description/icon.png
-├── DEMO_SCRIPT.md
 ├── TECHNICAL_NOTES.md
 └── README.md
 ```

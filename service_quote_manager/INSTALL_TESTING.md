@@ -4,8 +4,7 @@ Guía exacta para instalar y probar el módulo `service_quote_manager` en un
 entorno **real de Odoo 17.0**. Dos opciones: **Docker** (recomendada en Windows)
 e **instalación local con `odoo-bin`**.
 
-> Complementa a `README.md` (uso), `DEMO_SCRIPT.md` (demo) y
-> `TECHNICAL_NOTES.md` (arquitectura).
+> Complementa a `README.md` (uso) y `TECHNICAL_NOTES.md` (arquitectura).
 
 ---
 

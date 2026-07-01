@@ -74,7 +74,6 @@ También disponible como paquete listo para copiar:
 |-----------|-----------|
 | [`QUICK_INSTALL.md`](QUICK_INSTALL.md) | Instalación rápida install-ready para Odoo 17 |
 | [`service_quote_manager/README.md`](service_quote_manager/README.md) | Funcionalidad, uso, checklist de pruebas y mejoras futuras |
-| [`service_quote_manager/DEMO_SCRIPT.md`](service_quote_manager/DEMO_SCRIPT.md) | Guion de demo cronometrado para entrevista |
 | [`service_quote_manager/TECHNICAL_NOTES.md`](service_quote_manager/TECHNICAL_NOTES.md) | Arquitectura y decisiones de diseño (Odoo 17) |
 
 ---
