@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Menú raíz de la aplicación -->
+    <menuitem id="menu_service_quote_root"
+              name="Service Quote Manager"
+              sequence="20"
+              web_icon="service_quote_manager,static/description/icon.png"
+              groups="group_service_quote_user"/>
+
+    <!-- Panel de rentabilidad -->
+    <menuitem id="menu_service_quote_dashboard"
+              name="Panel"
+              parent="menu_service_quote_root"
+              action="action_service_request_dashboard"
+              sequence="5"/>
+
+    <!-- Solicitudes -->
+    <menuitem id="menu_service_quote_requests"
+              name="Solicitudes"
+              parent="menu_service_quote_root"
+              action="action_service_request"
+              sequence="10"/>
+
+    <!-- Tablero Kanban -->
+    <menuitem id="menu_service_quote_kanban"
+              name="Tablero Kanban"
+              parent="menu_service_quote_root"
+              action="action_service_request_kanban"
+              sequence="15"/>
+
+    <!-- Presupuesto rápido -->
+    <menuitem id="menu_service_quote_quick"
+              name="Presupuesto rápido"
+              parent="menu_service_quote_root"
+              action="action_quick_quote_wizard"
+              sequence="20"/>
+
+    <!-- Configuración (solo managers) -->
+    <menuitem id="menu_service_quote_config"
+              name="Configuración"
+              parent="menu_service_quote_root"
+              sequence="90"
+              groups="group_service_quote_manager"/>
+
+    <menuitem id="menu_service_quote_types"
+              name="Tipos de servicio"
+              parent="menu_service_quote_config"
+              action="action_service_request_type"
+              sequence="10"/>
+
+</odoo>

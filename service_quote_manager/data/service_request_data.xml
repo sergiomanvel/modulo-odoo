@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Secuencia de referencia de solicitudes: SR-00001, SR-00002... -->
+    <data noupdate="1">
+        <record id="seq_service_request" model="ir.sequence">
+            <field name="name">Solicitud de servicio</field>
+            <field name="code">service.request</field>
+            <field name="prefix">SR-</field>
+            <field name="padding">5</field>
+            <field name="number_next">1</field>
+            <field name="number_increment">1</field>
+            <field name="company_id" eval="False"/>
+        </record>
+    </data>
+
+    <!-- Tipos de servicio con sus plantillas de líneas.
+         Actualizables al reinstalar/actualizar el módulo. -->
+    <data noupdate="0">
+
+        <!-- 1. Instalación de cuadro eléctrico -->
+        <record id="type_cuadro" model="service.request.type">
+            <field name="name">Instalación de cuadro eléctrico</field>
+            <field name="code">CUADRO</field>
+            <field name="sequence">10</field>
+            <field name="color">4</field>
+            <field name="default_priority">2</field>
+            <field name="description">Sustitución o instalación de cuadro eléctrico con protecciones.</field>
+        </record>
+        <record id="tpl_cuadro_1" model="service.quote.template.line">
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="sequence">10</field>
+            <field name="line_type">material</field>
+            <field name="name">Cuadro modular + protecciones</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">520</field>
+            <field name="unit_price">820</field>
+        </record>
+        <record id="tpl_cuadro_2" model="service.quote.template.line">
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="sequence">20</field>
+            <field name="line_type">material</field>
+            <field name="name">Cableado y canalización</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">150</field>
+            <field name="unit_price">230</field>
+        </record>
+        <record id="tpl_cuadro_3" model="service.quote.template.line">
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="sequence">30</field>
+            <field name="line_type">labor</field>
+            <field name="name">Instalación y conexionado</field>
+            <field name="quantity">12</field>
+            <field name="unit_cost">22</field>
+            <field name="unit_price">38</field>
+        </record>
+        <record id="tpl_cuadro_4" model="service.quote.template.line">
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="sequence">40</field>
+            <field name="line_type">travel</field>
+            <field name="name">Desplazamiento</field>
+            <field name="quantity">2</field>
+            <field name="unit_cost">15</field>
+            <field name="unit_price">25</field>
+        </record>
+        <record id="tpl_cuadro_5" model="service.quote.template.line">
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="sequence">50</field>
+            <field name="line_type">extra</field>
+            <field name="name">Certificado boletín BT</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">40</field>
+            <field name="unit_price">90</field>
+        </record>
+
+        <!-- 2. Iluminación LED -->
+        <record id="type_led" model="service.request.type">
+            <field name="name">Iluminación LED</field>
+            <field name="code">LED</field>
+            <field name="sequence">20</field>
+            <field name="color">10</field>
+            <field name="default_priority">1</field>
+            <field name="description">Sustitución de luminarias por tecnología LED en zonas comunes.</field>
+        </record>
+        <record id="tpl_led_1" model="service.quote.template.line">
+            <field name="type_id" ref="type_led"/>
+            <field name="sequence">10</field>
+            <field name="line_type">material</field>
+            <field name="name">Luminarias LED</field>
+            <field name="quantity">10</field>
+            <field name="unit_cost">18</field>
+            <field name="unit_price">32</field>
+        </record>
+        <record id="tpl_led_2" model="service.quote.template.line">
+            <field name="type_id" ref="type_led"/>
+            <field name="sequence">20</field>
+            <field name="line_type">material</field>
+            <field name="name">Material de fijación y cableado</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">60</field>
+            <field name="unit_price">110</field>
+        </record>
+        <record id="tpl_led_3" model="service.quote.template.line">
+            <field name="type_id" ref="type_led"/>
+            <field name="sequence">30</field>
+            <field name="line_type">labor</field>
+            <field name="name">Montaje e instalación</field>
+            <field name="quantity">6</field>
+            <field name="unit_cost">22</field>
+            <field name="unit_price">38</field>
+        </record>
+        <record id="tpl_led_4" model="service.quote.template.line">
+            <field name="type_id" ref="type_led"/>
+            <field name="sequence">40</field>
+            <field name="line_type">travel</field>
+            <field name="name">Desplazamiento</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">15</field>
+            <field name="unit_price">25</field>
+        </record>
+
+        <!-- 3. Tomas y puntos de luz -->
+        <record id="type_tomas" model="service.request.type">
+            <field name="name">Tomas y puntos de luz</field>
+            <field name="code">TOMAS</field>
+            <field name="sequence">30</field>
+            <field name="color">3</field>
+            <field name="default_priority">1</field>
+            <field name="description">Instalación de nuevas tomas de corriente y puntos de luz.</field>
+        </record>
+        <record id="tpl_tomas_1" model="service.quote.template.line">
+            <field name="type_id" ref="type_tomas"/>
+            <field name="sequence">10</field>
+            <field name="line_type">material</field>
+            <field name="name">Mecanismos y cajas</field>
+            <field name="quantity">8</field>
+            <field name="unit_cost">6</field>
+            <field name="unit_price">14</field>
+        </record>
+        <record id="tpl_tomas_2" model="service.quote.template.line">
+            <field name="type_id" ref="type_tomas"/>
+            <field name="sequence">20</field>
+            <field name="line_type">labor</field>
+            <field name="name">Instalación de tomas y puntos</field>
+            <field name="quantity">5</field>
+            <field name="unit_cost">22</field>
+            <field name="unit_price">38</field>
+        </record>
+        <record id="tpl_tomas_3" model="service.quote.template.line">
+            <field name="type_id" ref="type_tomas"/>
+            <field name="sequence">30</field>
+            <field name="line_type">travel</field>
+            <field name="name">Desplazamiento</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">15</field>
+            <field name="unit_price">25</field>
+        </record>
+
+        <!-- 4. Revisión y mantenimiento -->
+        <record id="type_revision" model="service.request.type">
+            <field name="name">Revisión y mantenimiento</field>
+            <field name="code">REV</field>
+            <field name="sequence">40</field>
+            <field name="color">2</field>
+            <field name="default_priority">0</field>
+            <field name="description">Revisión periódica de la instalación y emisión de informe.</field>
+        </record>
+        <record id="tpl_revision_1" model="service.quote.template.line">
+            <field name="type_id" ref="type_revision"/>
+            <field name="sequence">10</field>
+            <field name="line_type">labor</field>
+            <field name="name">Revisión de instalación</field>
+            <field name="quantity">3</field>
+            <field name="unit_cost">25</field>
+            <field name="unit_price">45</field>
+        </record>
+        <record id="tpl_revision_2" model="service.quote.template.line">
+            <field name="type_id" ref="type_revision"/>
+            <field name="sequence">20</field>
+            <field name="line_type">material</field>
+            <field name="name">Material de reposición</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">40</field>
+            <field name="unit_price">70</field>
+        </record>
+        <record id="tpl_revision_3" model="service.quote.template.line">
+            <field name="type_id" ref="type_revision"/>
+            <field name="sequence">30</field>
+            <field name="line_type">extra</field>
+            <field name="name">Informe técnico</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">0</field>
+            <field name="unit_price">60</field>
+        </record>
+        <record id="tpl_revision_4" model="service.quote.template.line">
+            <field name="type_id" ref="type_revision"/>
+            <field name="sequence">40</field>
+            <field name="line_type">travel</field>
+            <field name="name">Desplazamiento</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">15</field>
+            <field name="unit_price">25</field>
+        </record>
+
+        <!-- 5. Reparación de avería -->
+        <record id="type_reparacion" model="service.request.type">
+            <field name="name">Reparación de avería</field>
+            <field name="code">REP</field>
+            <field name="sequence">50</field>
+            <field name="color">1</field>
+            <field name="default_priority">3</field>
+            <field name="description">Diagnóstico y reparación urgente de averías eléctricas.</field>
+        </record>
+        <record id="tpl_reparacion_1" model="service.quote.template.line">
+            <field name="type_id" ref="type_reparacion"/>
+            <field name="sequence">10</field>
+            <field name="line_type">labor</field>
+            <field name="name">Diagnóstico y reparación</field>
+            <field name="quantity">4</field>
+            <field name="unit_cost">25</field>
+            <field name="unit_price">48</field>
+        </record>
+        <record id="tpl_reparacion_2" model="service.quote.template.line">
+            <field name="type_id" ref="type_reparacion"/>
+            <field name="sequence">20</field>
+            <field name="line_type">material</field>
+            <field name="name">Repuestos</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">70</field>
+            <field name="unit_price">120</field>
+        </record>
+        <record id="tpl_reparacion_3" model="service.quote.template.line">
+            <field name="type_id" ref="type_reparacion"/>
+            <field name="sequence">30</field>
+            <field name="line_type">travel</field>
+            <field name="name">Desplazamiento urgente</field>
+            <field name="quantity">1</field>
+            <field name="unit_cost">25</field>
+            <field name="unit_price">40</field>
+        </record>
+
+    </data>
+</odoo>

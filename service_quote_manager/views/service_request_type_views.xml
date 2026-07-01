@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista lista -->
+    <record id="view_service_request_type_tree" model="ir.ui.view">
+        <field name="name">service.request.type.tree</field>
+        <field name="model">service.request.type</field>
+        <field name="arch" type="xml">
+            <tree string="Tipos de servicio">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="code" optional="show"/>
+                <field name="template_line_count" string="Líneas"/>
+                <field name="template_cost" optional="show"/>
+                <field name="template_price" optional="show"/>
+                <field name="template_margin_percent" string="Margen %" optional="show"/>
+                <field name="request_count" string="Solicitudes"/>
+                <field name="active" widget="boolean_toggle" optional="show"/>
+                <field name="currency_id" column_invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista formulario -->
+    <record id="view_service_request_type_form" model="ir.ui.view">
+        <field name="name">service.request.type.form</field>
+        <field name="model">service.request.type</field>
+        <field name="arch" type="xml">
+            <form string="Tipo de servicio">
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button class="oe_stat_button" icon="fa-file-text-o" type="object"
+                                name="action_view_requests">
+                            <field name="request_count" widget="statinfo" string="Solicitudes"/>
+                        </button>
+                    </div>
+                    <widget name="web_ribbon" title="Archivado" bg_color="text-bg-danger"
+                            invisible="active"/>
+                    <div class="oe_title">
+                        <label for="name"/>
+                        <h1><field name="name" placeholder="Ej. Instalación de cuadro eléctrico"/></h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="code"/>
+                            <field name="default_priority"/>
+                            <field name="active" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="template_line_count"/>
+                            <field name="template_cost"/>
+                            <field name="template_price"/>
+                            <field name="template_margin_percent"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Plantilla de líneas" name="template">
+                            <field name="template_line_ids">
+                                <tree editable="bottom">
+                                    <field name="sequence" widget="handle"/>
+                                    <field name="line_type"/>
+                                    <field name="name"/>
+                                    <field name="quantity"/>
+                                    <field name="unit_cost"/>
+                                    <field name="unit_price"/>
+                                    <field name="subtotal_cost" sum="Coste"/>
+                                    <field name="subtotal_price" sum="Precio"/>
+                                    <field name="currency_id" column_invisible="1"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="Descripción" name="description">
+                            <field name="description" placeholder="Descripción del tipo de servicio..."/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Acción -->
+    <record id="action_service_request_type" model="ir.actions.act_window">
+        <field name="name">Tipos de servicio</field>
+        <field name="res_model">service.request.type</field>
+        <field name="view_mode">tree,form</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Crea tu primer tipo de servicio
+            </p>
+            <p>
+                Los tipos de servicio definen plantillas de líneas reutilizables
+                por el asistente de presupuesto rápido.
+            </p>
+        </field>
+    </record>
+
+</odoo>

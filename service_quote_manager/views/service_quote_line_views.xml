@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Vista lista (usada por el smart button de la solicitud) -->
+    <record id="view_service_quote_line_tree" model="ir.ui.view">
+        <field name="name">service.quote.line.tree</field>
+        <field name="model">service.quote.line</field>
+        <field name="arch" type="xml">
+            <tree string="Líneas de presupuesto" editable="bottom">
+                <field name="sequence" widget="handle"/>
+                <field name="request_id" optional="hide"/>
+                <field name="line_type"/>
+                <field name="name"/>
+                <field name="quantity"/>
+                <field name="unit_cost"/>
+                <field name="unit_price"/>
+                <field name="subtotal_cost" sum="Coste total"/>
+                <field name="subtotal_price" sum="Precio total"/>
+                <field name="margin" sum="Beneficio"/>
+                <field name="currency_id" column_invisible="1"/>
+            </tree>
+        </field>
+    </record>
+
+    <!-- Vista formulario -->
+    <record id="view_service_quote_line_form" model="ir.ui.view">
+        <field name="name">service.quote.line.form</field>
+        <field name="model">service.quote.line</field>
+        <field name="arch" type="xml">
+            <form string="Línea de presupuesto">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="request_id"/>
+                            <field name="line_type"/>
+                            <field name="name"/>
+                        </group>
+                        <group>
+                            <field name="quantity"/>
+                            <field name="unit_cost"/>
+                            <field name="unit_price"/>
+                            <field name="subtotal_cost"/>
+                            <field name="subtotal_price"/>
+                            <field name="margin"/>
+                            <field name="currency_id" invisible="1"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Vista gráfico (análisis de líneas por tipo) -->
+    <record id="view_service_quote_line_graph" model="ir.ui.view">
+        <field name="name">service.quote.line.graph</field>
+        <field name="model">service.quote.line</field>
+        <field name="arch" type="xml">
+            <graph string="Análisis de líneas" type="bar" sample="1">
+                <field name="line_type"/>
+                <field name="subtotal_price" type="measure"/>
+                <field name="margin" type="measure"/>
+            </graph>
+        </field>
+    </record>
+
+</odoo>

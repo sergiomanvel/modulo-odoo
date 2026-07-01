@@ -1,0 +1,11 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_service_request_user,service.request.user,model_service_request,group_service_quote_user,1,1,1,0
+access_service_request_manager,service.request.manager,model_service_request,group_service_quote_manager,1,1,1,1
+access_service_quote_line_user,service.quote.line.user,model_service_quote_line,group_service_quote_user,1,1,1,1
+access_service_quote_line_manager,service.quote.line.manager,model_service_quote_line,group_service_quote_manager,1,1,1,1
+access_service_request_type_user,service.request.type.user,model_service_request_type,group_service_quote_user,1,0,0,0
+access_service_request_type_manager,service.request.type.manager,model_service_request_type,group_service_quote_manager,1,1,1,1
+access_service_quote_template_line_user,service.quote.template.line.user,model_service_quote_template_line,group_service_quote_user,1,0,0,0
+access_service_quote_template_line_manager,service.quote.template.line.manager,model_service_quote_template_line,group_service_quote_manager,1,1,1,1
+access_quick_quote_wizard_user,quick.quote.wizard.user,model_quick_quote_wizard,group_service_quote_user,1,1,1,1
+access_quick_quote_wizard_manager,quick.quote.wizard.manager,model_quick_quote_wizard,group_service_quote_manager,1,1,1,1

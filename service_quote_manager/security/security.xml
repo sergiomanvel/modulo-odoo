@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- Categoría de aplicación (aparece en Ajustes > Usuarios) -->
+        <record id="module_category_service_quote" model="ir.module.category">
+            <field name="name">Service Quote Manager</field>
+            <field name="description">Gestión de solicitudes técnicas y presupuestos.</field>
+            <field name="sequence">20</field>
+        </record>
+
+        <!-- Grupo: usuario -->
+        <record id="group_service_quote_user" model="res.groups">
+            <field name="name">Service Quote User</field>
+            <field name="category_id" ref="module_category_service_quote"/>
+            <field name="comment">Puede crear y gestionar solicitudes y presupuestos.</field>
+        </record>
+
+        <!-- Grupo: manager (implica usuario) -->
+        <record id="group_service_quote_manager" model="res.groups">
+            <field name="name">Service Quote Manager</field>
+            <field name="category_id" ref="module_category_service_quote"/>
+            <field name="comment">Acceso completo: configuración, borrado y aceptación de solicitudes no rentables.</field>
+            <field name="implied_ids" eval="[(4, ref('group_service_quote_user'))]"/>
+            <field name="users" eval="[(4, ref('base.user_admin'))]"/>
+        </record>
+
+        <!-- Regla multi-compañía para las solicitudes -->
+        <record id="rule_service_request_company" model="ir.rule">
+            <field name="name">Service Request: reglas multi-compañía</field>
+            <field name="model_id" ref="model_service_request"/>
+            <field name="domain_force">['|', ('company_id', '=', False), ('company_id', 'in', company_ids)]</field>
+            <field name="global" eval="True"/>
+        </record>
+
+    </data>
+</odoo>

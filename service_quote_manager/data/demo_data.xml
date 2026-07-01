@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+
+        <!-- ============================================================ -->
+        <!-- Clientes de ejemplo (res.partner)                            -->
+        <!-- ============================================================ -->
+        <record id="demo_partner_brasa" model="res.partner">
+            <field name="name">Restaurante La Brasa</field>
+            <field name="company_type">company</field>
+            <field name="email">contacto@labrasa.example.com</field>
+            <field name="phone">+34 600 111 222</field>
+            <field name="street">Av. del Mar 45</field>
+            <field name="city">Valencia</field>
+            <field name="zip">46011</field>
+        </record>
+        <record id="demo_partner_marina" model="res.partner">
+            <field name="name">Hotel Marina Sol</field>
+            <field name="company_type">company</field>
+            <field name="email">mantenimiento@marinasol.example.com</field>
+            <field name="phone">+34 600 333 444</field>
+            <field name="city">Alicante</field>
+        </record>
+        <record id="demo_partner_puerto" model="res.partner">
+            <field name="name">Comunidad Av. del Puerto 12</field>
+            <field name="company_type">company</field>
+            <field name="email">admin@puerto12.example.com</field>
+            <field name="phone">+34 600 555 666</field>
+            <field name="city">Valencia</field>
+        </record>
+        <record id="demo_partner_taller" model="res.partner">
+            <field name="name">Taller Mecánico RM</field>
+            <field name="company_type">company</field>
+            <field name="email">rm@tallerrm.example.com</field>
+            <field name="phone">+34 600 777 888</field>
+            <field name="city">Castellón</field>
+        </record>
+        <record id="demo_partner_delta" model="res.partner">
+            <field name="name">Oficinas Grupo Delta</field>
+            <field name="company_type">company</field>
+            <field name="email">facilities@grupodelta.example.com</field>
+            <field name="phone">+34 600 999 000</field>
+            <field name="city">Valencia</field>
+        </record>
+        <record id="demo_partner_fitzone" model="res.partner">
+            <field name="name">Gimnasio FitZone</field>
+            <field name="company_type">company</field>
+            <field name="email">info@fitzone.example.com</field>
+            <field name="phone">+34 601 111 222</field>
+            <field name="city">Torrent</field>
+        </record>
+        <record id="demo_partner_mayor8" model="res.partner">
+            <field name="name">Comunidad Calle Mayor 8</field>
+            <field name="company_type">company</field>
+            <field name="email">presidencia@mayor8.example.com</field>
+            <field name="city">Paterna</field>
+        </record>
+        <record id="demo_partner_juan" model="res.partner">
+            <field name="name">Juan Pérez (particular)</field>
+            <field name="company_type">person</field>
+            <field name="email">juan.perez@example.com</field>
+            <field name="phone">+34 611 222 333</field>
+            <field name="city">Mislata</field>
+        </record>
+
+        <!-- ============================================================ -->
+        <!-- Solicitudes de ejemplo (service.request)                     -->
+        <!-- ============================================================ -->
+
+        <!-- Margen BAJO (~14%) · Presupuestado · Urgente -->
+        <record id="demo_request_reparacion" model="service.request">
+            <field name="title">Reparación avería línea cocina</field>
+            <field name="partner_id" ref="demo_partner_brasa"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_reparacion"/>
+            <field name="priority">3</field>
+            <field name="state">quoted</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'labor', 'name': 'Diagnóstico y reparación', 'quantity': 4, 'unit_cost': 25, 'unit_price': 38}),
+                (0, 0, {'line_type': 'material', 'name': 'Repuestos horno industrial', 'quantity': 1, 'unit_cost': 430, 'unit_price': 480}),
+                (0, 0, {'line_type': 'travel', 'name': 'Desplazamiento urgente', 'quantity': 1, 'unit_cost': 48, 'unit_price': 44}),
+            ]"/>
+        </record>
+
+        <!-- Margen SALUDABLE (~43%) · Pendiente -->
+        <record id="demo_request_led" model="service.request">
+            <field name="title">Iluminación LED zonas comunes</field>
+            <field name="partner_id" ref="demo_partner_marina"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_led"/>
+            <field name="priority">1</field>
+            <field name="state">pending</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=15)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'material', 'name': 'Luminarias LED', 'quantity': 10, 'unit_cost': 18, 'unit_price': 32}),
+                (0, 0, {'line_type': 'material', 'name': 'Material de fijación y cableado', 'quantity': 1, 'unit_cost': 60, 'unit_price': 110}),
+                (0, 0, {'line_type': 'labor', 'name': 'Montaje e instalación', 'quantity': 6, 'unit_cost': 22, 'unit_price': 38}),
+                (0, 0, {'line_type': 'travel', 'name': 'Desplazamiento', 'quantity': 1, 'unit_cost': 15, 'unit_price': 25}),
+            ]"/>
+        </record>
+
+        <!-- Margen SALUDABLE (39%) · Aceptado -->
+        <record id="demo_request_cuadro" model="service.request">
+            <field name="title">Sustitución de cuadro eléctrico principal</field>
+            <field name="partner_id" ref="demo_partner_puerto"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="priority">2</field>
+            <field name="state">accepted</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=8)).strftime('%Y-%m-%d')"/>
+            <field name="date_accepted" eval="(datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=7)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'material', 'name': 'Cuadro modular + protecciones', 'quantity': 1, 'unit_cost': 520, 'unit_price': 820}),
+                (0, 0, {'line_type': 'material', 'name': 'Cableado y canalización', 'quantity': 1, 'unit_cost': 150, 'unit_price': 230}),
+                (0, 0, {'line_type': 'labor', 'name': 'Instalación y conexionado', 'quantity': 12, 'unit_cost': 22, 'unit_price': 38}),
+                (0, 0, {'line_type': 'travel', 'name': 'Desplazamiento', 'quantity': 2, 'unit_cost': 15, 'unit_price': 25}),
+                (0, 0, {'line_type': 'extra', 'name': 'Certificado boletín BT', 'quantity': 1, 'unit_cost': 40, 'unit_price': 90}),
+            ]"/>
+        </record>
+
+        <!-- NO RENTABLE (precio < coste) · Presupuestado -->
+        <record id="demo_request_taller" model="service.request">
+            <field name="title">Ampliación de potencia + toma trifásica</field>
+            <field name="partner_id" ref="demo_partner_taller"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_cuadro"/>
+            <field name="priority">2</field>
+            <field name="state">quoted</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=3)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=5)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'material', 'name': 'Ampliación de potencia (material)', 'quantity': 1, 'unit_cost': 900, 'unit_price': 820}),
+                (0, 0, {'line_type': 'labor', 'name': 'Instalación y trámites', 'quantity': 8, 'unit_cost': 22, 'unit_price': 28}),
+            ]"/>
+        </record>
+
+        <!-- Margen AJUSTADO (~21%) · En curso -->
+        <record id="demo_request_delta" model="service.request">
+            <field name="title">Cuadro secundario + canalización oficinas</field>
+            <field name="partner_id" ref="demo_partner_delta"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_tomas"/>
+            <field name="priority">1</field>
+            <field name="state">in_progress</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="date_accepted" eval="(datetime.date.today() - datetime.timedelta(days=6)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'material', 'name': 'Cuadro secundario + material', 'quantity': 1, 'unit_cost': 300, 'unit_price': 360}),
+                (0, 0, {'line_type': 'labor', 'name': 'Canalización e instalación', 'quantity': 5, 'unit_cost': 22, 'unit_price': 32}),
+            ]"/>
+        </record>
+
+        <!-- VENCIDA (deadline pasado) · Pendiente · Margen saludable -->
+        <record id="demo_request_fitzone" model="service.request">
+            <field name="title">Iluminación LED sala + emergencias</field>
+            <field name="partner_id" ref="demo_partner_fitzone"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_led"/>
+            <field name="priority">2</field>
+            <field name="state">pending</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=20)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() - datetime.timedelta(days=2)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'material', 'name': 'Luminarias LED + emergencias', 'quantity': 12, 'unit_cost': 18, 'unit_price': 34}),
+                (0, 0, {'line_type': 'labor', 'name': 'Montaje e instalación', 'quantity': 8, 'unit_cost': 22, 'unit_price': 40}),
+                (0, 0, {'line_type': 'travel', 'name': 'Desplazamiento', 'quantity': 1, 'unit_cost': 15, 'unit_price': 25}),
+            ]"/>
+        </record>
+
+        <!-- Completado · Margen saludable -->
+        <record id="demo_request_mayor8" model="service.request">
+            <field name="title">Revisión y certificado BT</field>
+            <field name="partner_id" ref="demo_partner_mayor8"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_revision"/>
+            <field name="priority">0</field>
+            <field name="state">done</field>
+            <field name="date_request" eval="(datetime.date.today() - datetime.timedelta(days=30)).strftime('%Y-%m-%d')"/>
+            <field name="date_accepted" eval="(datetime.date.today() - datetime.timedelta(days=25)).strftime('%Y-%m-%d')"/>
+            <field name="date_done" eval="(datetime.date.today() - datetime.timedelta(days=12)).strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() - datetime.timedelta(days=10)).strftime('%Y-%m-%d')"/>
+            <field name="quote_line_ids" eval="[
+                (0, 0, {'line_type': 'labor', 'name': 'Revisión de instalación', 'quantity': 3, 'unit_cost': 25, 'unit_price': 45}),
+                (0, 0, {'line_type': 'extra', 'name': 'Informe técnico', 'quantity': 1, 'unit_cost': 0, 'unit_price': 60}),
+                (0, 0, {'line_type': 'travel', 'name': 'Desplazamiento', 'quantity': 1, 'unit_cost': 15, 'unit_price': 25}),
+            ]"/>
+        </record>
+
+        <!-- Borrador sin líneas · para probar el asistente de presupuesto rápido -->
+        <record id="demo_request_juan" model="service.request">
+            <field name="title">Tomas y puntos de luz reforma cocina</field>
+            <field name="partner_id" ref="demo_partner_juan"/>
+            <field name="user_id" ref="base.user_admin"/>
+            <field name="type_id" ref="type_tomas"/>
+            <field name="priority">0</field>
+            <field name="state">draft</field>
+            <field name="date_request" eval="datetime.date.today().strftime('%Y-%m-%d')"/>
+            <field name="date_deadline" eval="(datetime.date.today() + datetime.timedelta(days=10)).strftime('%Y-%m-%d')"/>
+        </record>
+
+    </data>
+</odoo>

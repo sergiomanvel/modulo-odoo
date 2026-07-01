@@ -1,0 +1,59 @@
+# ==========================================================================
+# .gitignore — ProyectoODOO
+# Mantiene el proyecto limpio para VPS/repositorio: sin cachés, skills,
+# entornos virtuales ni temporales locales.
+# ==========================================================================
+
+# --- Skills locales / lockfile ---
+.agents/
+skills-lock.json
+
+# --- Cachés de Python ---
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# --- Entornos virtuales / variables de entorno ---
+.venv/
+venv/
+env/
+.env
+
+# --- Logs y temporales ---
+*.log
+*.tmp
+
+# --- Basura del sistema operativo ---
+.DS_Store
+Thumbs.db
+
+# --- IDEs / editores ---
+.idea/
+.vscode/
+
+# --- Node / builds / distribuciones ---
+node_modules/
+dist/
+build/
+
+# --- Archivos comprimidos ---
+*.zip
+*.tar
+*.tar.gz
+
+# ==========================================================================
+# NO ignorar (se conservan siempre en el repositorio)
+# ==========================================================================
+!docker-compose.yml
+!VPS_DEPLOYMENT.md
+!service_quote_manager/
+!service_quote_manager/README.md
+!service_quote_manager/INSTALL_TESTING.md
+!service_quote_manager/DEMO_SCRIPT.md
+!service_quote_manager/TECHNICAL_NOTES.md
+!service_quote_manager/static/
+!service_quote_manager/static/description/
+!service_quote_manager/static/description/icon.png
