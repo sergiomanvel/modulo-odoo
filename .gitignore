@@ -44,6 +44,9 @@ build/
 *.tar
 *.tar.gz
 
+# --- Release / binarios generados (se publican como GitHub Release assets) ---
+release/
+
 # ==========================================================================
 # NO ignorar (se conservan siempre en el repositorio)
 # ==========================================================================
